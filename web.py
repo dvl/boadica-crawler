@@ -15,10 +15,11 @@ class Produto(db.Document):
     fabricante = db.StringField()
     modelo = db.StringField()
     especificacoes = db.StringField()
-    preco = db.DecimalField()
+    preco = db.StringField()
     vendedor = db.StringField()
     vendedor_link = db.StringField()
     local = db.StringField()
+    categoria = db.StringField()
 
     def __unicode__(self):
         return '{0} - {1}'.format(self.fabricante, self.modelo)
