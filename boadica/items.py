@@ -11,3 +11,4 @@ class Produto(Item):
     vendedor = Field()
     vendedor_link = Field()
     local = Field()
+    categoria = Field()

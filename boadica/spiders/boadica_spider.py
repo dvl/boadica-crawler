@@ -37,6 +37,8 @@ class BoadicaSpider(CrawlSpider):
 
         sel = Selector(response)
 
+        cat = sel.xpath('(//div[@class="breadcumb"]/a[2])[1]/text()').extract()
+
         for tr in sel.xpath('//tr[starts-with(@id, "trProd")]'):
             produto = Produto()
 
@@ -47,6 +49,7 @@ class BoadicaSpider(CrawlSpider):
             produto['vendedor'] = tr.xpath('td[6]/a/text()').extract()
             produto['vendedor_link'] = '%s%s' % ('http://www.boadica.com.br', tr.xpath('td[6]/a/@href').re(r'openWindow\(\'(.*)\'\)')[0])
             produto['local'] = tr.xpath('td[7]/text()').extract()
+            produto['categoria'] = cat
 
             produtos.append(produto)
 
